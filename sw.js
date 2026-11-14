@@ -1,5 +1,5 @@
 // Guarda la "carcasa" de la app para que abra al instante (sin datos: los datos viven en Google, protegidos con PIN).
-const C = 'fo2627-v3';
+const C = 'fo2627-v4';
 const SHELL = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './favicon.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(C).then(c => c.addAll(SHELL))); self.skipWaiting(); });
 self.addEventListener('activate', e => e.waitUntil(caches.keys().then(k => Promise.all(k.filter(x => x !== C).map(x => caches.delete(x)))).then(() => self.clients.claim())));
